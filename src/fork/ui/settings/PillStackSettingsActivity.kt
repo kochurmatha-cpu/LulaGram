@@ -8,7 +8,6 @@ import desu.inugram.helpers.InuUtils
 import desu.inugram.helpers.pillstack.PillStackLayout
 import desu.inugram.helpers.pillstack.PillType
 import desu.inugram.helpers.pillstack.RateInstances
-import desu.inugram.helpers.pillstack.WeatherLocationHelper
 import org.telegram.messenger.LocaleController
 import org.telegram.messenger.R
 import org.telegram.messenger.Utilities
@@ -22,7 +21,7 @@ import org.telegram.ui.Components.ItemOptions
 import org.telegram.ui.Components.UItem
 import org.telegram.ui.Components.UniversalAdapter
 
-// entiny: top-level Pill Stack settings -- master toggle, infinite scroll, visible-at-once, active/hidden pills, weather location.
+// entiny: top-level Pill Stack settings -- master toggle, infinite scroll, visible-at-once, active/hidden pills.
 class PillStackSettingsActivity : SettingsPageActivity() {
 
     override fun getTitle(): CharSequence = LocaleController.getString(R.string.InuPillStack)
@@ -59,7 +58,6 @@ class PillStackSettingsActivity : SettingsPageActivity() {
                 LocaleController.getString(R.string.InuPillStackInfiniteScrolling)
             ).setChecked(InuConfig.PILL_STACK_INFINITE_SCROLL.value)
         )
-        items.add(mkTwoLineCheckItem(TOGGLE_PROXY_COUNTRY, R.string.InuPillStackProxyCountry, R.string.InuPillStackProxyCountryInfo, InuConfig.PILL_STACK_PROXY_COUNTRY.value))
 
         items.add(
             mkTwoLineCheckItem(
@@ -115,23 +113,6 @@ class PillStackSettingsActivity : SettingsPageActivity() {
             }
         }
         items.add(UItem.asShadow(LocaleController.getString(R.string.InuPillStackPillsSettingsInfo)))
-
-        if (active.contains(PillType.WEATHER.id)) {
-            val weatherItem = UItem.asButton(
-                BUTTON_WEATHER_LOCATION,
-                R.drawable.entiny_cloud,
-                LocaleController.getString(R.string.InuPillStackWeather),
-                WeatherLocationHelper.label()
-            )
-            weatherItem.bind = Utilities.Callback { view ->
-                val cell = view as? TextCell ?: return@Callback
-                cell.imageLeft = 16
-                cell.offsetFromImage = 65
-                cell.setColors(Theme.key_windowBackgroundWhiteBlueIcon, Theme.key_windowBackgroundWhiteBlackText)
-            }
-            items.add(weatherItem)
-            items.add(UItem.asShadow(null))
-        }
 
         val resetItem = UItem.asButton(
             BUTTON_RESET,
@@ -200,11 +181,6 @@ class PillStackSettingsActivity : SettingsPageActivity() {
                 setCellChecked(view, new)
             }
 
-            item.id == TOGGLE_PROXY_COUNTRY -> {
-                val new = InuConfig.PILL_STACK_PROXY_COUNTRY.toggle()
-                setCellChecked(view, new)
-            }
-
             item.id in ACTIVE_ITEM_BASE until HIDDEN_ITEM_BASE -> {
                 val pillId = item.id - ACTIVE_ITEM_BASE
                 PillStackLayout.setPillActive(pillId, false)
@@ -218,8 +194,6 @@ class PillStackSettingsActivity : SettingsPageActivity() {
             }
 
             item.id == BUTTON_ADD_RATE -> presentFragment(RatePairEditActivity())
-
-            item.id == BUTTON_WEATHER_LOCATION -> presentFragment(WeatherLocationActivity())
 
             item.id == BUTTON_RESET -> {
                 PillStackLayout.resetLayout()
@@ -275,12 +249,10 @@ class PillStackSettingsActivity : SettingsPageActivity() {
             val type = PillType.entries.find { it.id == id } ?: return null
             val colors = when (type) {
                 PillType.CACHE -> IconBackgroundColors.BLUE_DEEP
-                PillType.PROXY -> IconBackgroundColors.GREEN
                 PillType.NET_SPEED -> IconBackgroundColors.BLUE
                 PillType.RAM -> IconBackgroundColors.CYAN
                 PillType.DC_PING -> IconBackgroundColors.GREEN
                 PillType.GHOST -> IconBackgroundColors.PURPLE
-                PillType.WEATHER -> IconBackgroundColors.BLUE_ALT
                 PillType.CLOCK -> IconBackgroundColors.ORANGE
                 PillType.BATTERY -> IconBackgroundColors.GREEN
                 PillType.STORAGE -> IconBackgroundColors.BLUE_DEEP
@@ -310,11 +282,9 @@ class PillStackSettingsActivity : SettingsPageActivity() {
     companion object {
         private val TOGGLE_MASTER = InuUtils.generateId()
         private val TOGGLE_INFINITE_SCROLL = InuUtils.generateId()
-        private val TOGGLE_PROXY_COUNTRY = InuUtils.generateId()
         private val TOGGLE_IN_HEADER = InuUtils.generateId()
         private val ID_ACTIVE_EMPTY = InuUtils.generateId()
         private val ID_HIDDEN_EMPTY = InuUtils.generateId()
-        private val BUTTON_WEATHER_LOCATION = InuUtils.generateId()
         private val BUTTON_ADD_RATE = InuUtils.generateId()
         private val BUTTON_RESET = InuUtils.generateId()
         private val SHADOW_END = InuUtils.generateId()
@@ -331,7 +301,6 @@ class PillStackSettingsActivity : SettingsPageActivity() {
             entries = listOf(
                 SearchRegistry.Entry("pill-stack-master", R.string.InuPillStack, TOGGLE_MASTER),
                 SearchRegistry.Entry("pill-stack-infinite-scroll", R.string.InuPillStackInfiniteScrolling, TOGGLE_INFINITE_SCROLL),
-                SearchRegistry.Entry("pill-stack-proxy-country", R.string.InuPillStackProxyCountry, TOGGLE_PROXY_COUNTRY),
                 SearchRegistry.Entry("pill-stack-in-header", R.string.InuPillStackInHeader, TOGGLE_IN_HEADER),
             ),
         )

@@ -15,6 +15,9 @@ what entinygram used to have and no longer ships, and why. one row per feature, 
 | drawer material 3 sections | grouped side drawer rows into rounded cards | inugram shipped its own material 3 drawer redesign, kept as the base after the merge so the two styles do not stack |
 | raise fab buttons | a toggle that lifted the chat-list buttons a few dp | it had no effect: the code that read it was never called |
 | thicken bold text | a fonts toggle that faked a bold weight for custom fonts without one | it only touched non-variable fonts lacking a bold face and needed a restart, so it did almost nothing. the fake bold stays always on. `tg://entinySettings/thicken-bold-text` now opens the fonts page |
+| ui translations | ru, uk, ja, zh-rCN, tr, ar, fa, es and it strings for entinygram's own settings and menus | this build is english only. the app's locale filter is derived from the `strings_inu.xml` folders, so the apk now carries default english resources only. chat translation providers are unchanged |
+| proxy extras | proxy list tools and menu, import from clipboard, connect-choice, proxy link sheet, aggressive rotation, websocket tunnel, leak guard, auto-disable on vpn, proxy country flag in the dc ping pill, the proxy pill and the experimental proxy page | telegram's own proxy settings are enough. the code is deleted along with the `proxy-settings`, `proxy-rotation-fix`, `anticensorship` and `proxy-batch-import` patches |
+| maps and location | osmdroid map view, map provider and map preview provider settings, hybrid-view guard, weather pill and its location picker | the build uses telegram's stock google maps provider again and the fork adds nothing on top. the code is deleted along with the `osmdroid-provider-wiring` and `maps` patches |
 
 ## how to add a row
 

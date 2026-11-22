@@ -10,9 +10,6 @@ import desu.inugram.helpers.InuUtils
 import desu.inugram.helpers.icons.IconPackHelper
 import desu.inugram.ui.settings.fonts.FontsSettingsActivity
 import desu.inugram.helpers.LocalPremiumHelper
-import desu.inugram.helpers.ProxyVpnHelper
-import desu.inugram.helpers.proxy.CensorshipHelper
-import desu.inugram.helpers.proxy.ProxyRotationHelper
 import desu.inugram.helpers.push.UnifiedPushHelper
 import desu.inugram.helpers.UrlCleanerHelper
 import desu.inugram.helpers.security.BiometricHelper
@@ -33,14 +30,12 @@ import desu.inugram.helpers.dialogs.FolderHelper
 import desu.inugram.helpers.dialogs.MainTabsHelper
 import desu.inugram.helpers.dialogs.UnreadFirstHelper
 import desu.inugram.helpers.dialogs.RecentChatsHelper
-import desu.inugram.helpers.maps.MapsHelper
 import desu.inugram.ui.BookmarksManagerActivity
 import desu.inugram.ui.showInputDialog
 import desu.inugram.ui.spoof.DeviceSpoofSettingsActivity
 import org.telegram.messenger.AndroidUtilities
 import org.telegram.messenger.Utilities
 import org.telegram.ui.Cells.NotificationsCheckCell
-import org.telegram.messenger.ApplicationLoader
 import org.telegram.messenger.LocaleController
 import org.telegram.messenger.MediaDataController
 import org.telegram.messenger.MessagesController
@@ -57,7 +52,6 @@ import org.telegram.ui.Components.BulletinFactory
 import org.telegram.ui.Components.HintsController
 import org.telegram.ui.Components.UItem
 import org.telegram.ui.GroupCreateActivity
-import org.telegram.ui.ProxyListActivity
 
 object Schemas {
     // entiny: pre-schema deeplink slugs (tg://entinySettings/<slug>) that must keep resolving
@@ -105,7 +99,7 @@ object Schemas {
         "profile-accounts" to listOf("user-profile"),
     )
 
-    private val DOWNLOAD_DIRECTORIES = listOf("entinyGram", "Telegram")
+    private val DOWNLOAD_DIRECTORIES = listOf("LulaGram", "Telegram")
 
     val CHATS = schema("chats-messages", R.string.InuChatsAndMessages, R.drawable.entiny_message_menu) {
         section(R.string.InuMessageInput) {
@@ -233,28 +227,6 @@ object Schemas {
                 },
                 slug = "web-preview-replacements",
             ) { WebPreviewReplacementsActivity() }
-        }
-        section(R.string.InuMapsHeader) {
-            val providers = buildList {
-                add(InuConfig.MapProviderItem.GOOGLE to R.string.InuMapProviderGoogle)
-                if (MapsHelper.hasOsmdroid) add(InuConfig.MapProviderItem.OSM_LITE to R.string.InuMapProviderOsmLite)
-            }
-            choice(
-                InuConfig.MAP_PROVIDER, R.string.InuMapProvider,
-                providers.map { it.second },
-                providers.map { it.first }.toIntArray(),
-                visible = { providers.size > 1 },
-            ) { ApplicationLoader.inu_resetMapsProvider() }
-            choice(
-                InuConfig.MAP_PREVIEW_PROVIDER, R.string.InuMapPreviewProvider,
-                listOf(R.string.Default, R.string.InuMapPreviewProviderTelegram, R.string.InuMapPreviewProviderGoogle, R.string.Disable),
-                intArrayOf(
-                    InuConfig.MapPreviewProviderItem.DEFAULT,
-                    InuConfig.MapPreviewProviderItem.TELEGRAM,
-                    InuConfig.MapPreviewProviderItem.GOOGLE,
-                    InuConfig.MapPreviewProviderItem.DISABLED,
-                ),
-            ) { page -> MapsHelper.syncMapProvider(page.messagesController) }
         }
         section(R.string.InuReactions) {
             link(R.string.InuPinnedReactions, R.drawable.entiny_smile, slug = "pinned-reactions") { PinnedReactionsActivity() }
@@ -1115,10 +1087,6 @@ object Schemas {
             toggle(InuConfig.FASTER_UPLOADS, R.string.InuFasterUploads)
         }
         section(R.string.InuDownloadsAndNetwork) {
-            toggle(
-                InuConfig.AUTO_DISABLE_PROXY_ON_VPN, R.string.InuAutoDisableProxyOnVpn,
-                onChange = { _, _ -> ProxyVpnHelper.reconcile() },
-            )
             toggle(InuConfig.ALWAYS_SEND_VIDEOS_HD, R.string.InuAlwaysSendVideosHd, R.string.InuAlwaysSendVideosHdInfo)
             custom(
                 "download-directory", R.string.InuDownloadDirectory,
@@ -1139,47 +1107,6 @@ object Schemas {
                 },
             )
             toggle(InuConfig.SAVE_FILENAME_DATE, R.string.InuSaveFilenameDate, R.string.InuSaveFilenameDateInfo)
-        }
-    }
-
-    val PROXY = schema("proxy", R.string.InuProxyPage, R.drawable.entiny_proxy) {
-        notice(R.string.InuProxyDisclaimer)
-        section(R.string.InuProxyListHeader) {
-            toggle(InuConfig.PROXY_LIST_TOOLS, R.string.InuProxyListTools, R.string.InuProxyListToolsInfo)
-            toggle(InuConfig.PROXY_LIST_MENU, R.string.InuProxyListMenu, R.string.InuProxyListMenuInfo)
-            toggle(InuConfig.PROXY_CONNECT_CHOICE, R.string.InuProxyConnectChoice, R.string.InuProxyConnectChoiceInfo)
-        }
-        section(R.string.InuProxyLinksHeader) {
-            toggle(InuConfig.PROXY_LINK_ALERT, R.string.InuProxyLinkAlert, R.string.InuProxyLinkAlertInfo)
-        }
-        section(R.string.InuProxyRotationHeader) {
-            toggle(
-                InuConfig.PROXY_AGGRESSIVE_ROTATION, R.string.InuProxyAggressiveRotation, R.string.InuProxyAggressiveRotationInfo,
-                onChange = { _, _ -> ProxyRotationHelper.onToggle() },
-            )
-        }
-        section(R.string.InuProxyTunnelHeader) {
-            toggle(
-                InuConfig.ANTICENSOR_WS_TUNNEL, R.string.InuWsTunnel, R.string.InuWsTunnelInfo,
-                onChange = { _, on -> CensorshipHelper.setTunnelEnabled(on) },
-            )
-            toggle(
-                InuConfig.LEAK_GUARD, R.string.InuLeakGuard, R.string.InuLeakGuardInfo,
-                onChange = { _, on -> CensorshipHelper.setLeakGuardEnabled(on) },
-            )
-        }
-        section(R.string.InuProxyRelatedHeader) {
-            custom(
-                "", R.string.ProxySettings,
-                build = { _, id -> UItem.asButton(id, R.drawable.entiny_proxy_list, LocaleController.getString(R.string.ProxySettings)) },
-                click = { page, _ -> page.presentFragment(ProxyListActivity()) },
-            )
-            link(R.string.InuAutoDisableProxyOnVpn, R.drawable.entiny_proxy_vpn) {
-                SchemaPageActivity(NETWORK).withHighlight(toggleId(NETWORK, InuConfig.AUTO_DISABLE_PROXY_ON_VPN))
-            }
-            link(R.string.InuHideProxySponsorChat, R.drawable.entiny_proxy_sponsor) {
-                SchemaPageActivity(RESTRICTED).withHighlight(toggleId(RESTRICTED, InuConfig.HIDE_PROXY_SPONSOR_CHAT))
-            }
         }
     }
 

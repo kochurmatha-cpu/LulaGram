@@ -467,43 +467,10 @@ object InuConfig {
     val ATTACH_CAMERA_EXPOSURE_BACK = FloatItem("attach_camera_exposure_back", 0f)
 
     @JvmField
-    val DOWNLOAD_DIRECTORY = StringItem("download_directory", "entinyGram", allowed = setOf("entinyGram", "Telegram"))
+    val DOWNLOAD_DIRECTORY = StringItem("download_directory", "LulaGram", allowed = setOf("LulaGram", "Telegram"))
 
     @JvmField
     val SAVE_FILENAME_DATE = BoolItem("save_filename_date", false)
-
-    @JvmField
-    val AUTO_DISABLE_PROXY_ON_VPN = BoolItem("auto_disable_proxy_on_vpn", false)
-
-    @JvmField
-    val PROXY_SUPPRESSED_BY_VPN = BoolItem("proxy_suppressed_by_vpn", false, exportable = false)
-
-    @JvmField
-    val PROXY_LIST_TOOLS = BoolItem("proxy_list_tools", false)
-
-    @JvmField
-    val PROXY_LIST_MENU = BoolItem("proxy_list_menu", false)
-
-    @JvmField
-    val PROXY_CONNECT_CHOICE = BoolItem("proxy_connect_choice", false)
-
-    @JvmField
-    val PROXY_LINK_ALERT = BoolItem("proxy_link_alert", false)
-
-    @JvmField
-    val PROXY_AGGRESSIVE_ROTATION = BoolItem("proxy_aggressive_rotation", false)
-
-    @JvmField
-    val ANTICENSOR_WS_TUNNEL = BoolItem("anticensor_ws_tunnel", false, exportable = false)
-
-    @JvmField
-    val ANTICENSOR_WS_SECRET = StringItem("anticensor_ws_secret", "", exportable = false)
-
-    @JvmField
-    val ANTICENSOR_WS_PORT = IntItem("anticensor_ws_port", 0, exportable = false)
-
-    @JvmField
-    val LEAK_GUARD = BoolItem("leak_guard", false)
 
     @JvmField
     val SHOW_ALL_RECENT_STICKERS = BoolItem("show_all_recent_stickers", true)
@@ -1945,39 +1912,6 @@ val MEMORY_TRIM = BoolItem("memory_trim", true)
     @JvmField
     val NOTIFICATION_ICON = NotificationIconItem()
 
-    class MapProviderItem : IntItem("map_provider", OSM_LITE) {
-        // entiny: a plugin's tile source only exists on the osmdroid map, the stored choice stays untouched
-        override var value: Int
-            get() = if (desu.inugram.helpers.maps.EntinyMapTiles.active != null) OSM_LITE else super.value
-            set(v) {
-                super.value = v
-            }
-
-        override fun SharedPreferences.Editor.write() {
-            putInt(key, super.value)
-        }
-
-        companion object {
-            const val GOOGLE = 0
-            const val OSM_LITE = 2 // osmdroid raster renderer (pure java, no native libs)
-        }
-    }
-
-    @JvmField
-    val MAP_PROVIDER = MapProviderItem()
-
-    class MapPreviewProviderItem : IntItem("map_preview_provider", DEFAULT) {
-        companion object {
-            const val DEFAULT = 0
-            const val TELEGRAM = 1
-            const val GOOGLE = 2
-            const val DISABLED = 4
-        }
-    }
-
-    @JvmField
-    val MAP_PREVIEW_PROVIDER = MapPreviewProviderItem()
-
     class UpdatesEnabledItem : BoolItem("updates_enabled", true, exportable = false) {
         override fun read(prefs: SharedPreferences): Boolean {
             if (!prefs.contains(key) && prefs.contains("update_channel")) {
@@ -2391,20 +2325,4 @@ val MEMORY_TRIM = BoolItem("memory_trim", true)
     // entiny: niche -- render the pills in the action bar next to the menu instead of inside the chats search bar
     @JvmField
     val PILL_STACK_IN_HEADER = BoolItem("pill_stack_in_header", false)
-
-    @JvmField
-    val PILL_STACK_PROXY_COUNTRY = BoolItem("pill_stack_proxy_country", false)
-
-    // entiny: weather pill location -- the device position by default, or a point picked on the map (no location permission)
-    @JvmField
-    val WEATHER_USE_CURRENT_LOCATION = BoolItem("weather_use_current_location", true)
-
-    @JvmField
-    val WEATHER_FAHRENHEIT = BoolItem("weather_fahrenheit", false)
-
-    @JvmField
-    val WEATHER_LOCATION = StringItem("weather_location", "")
-
-    @JvmField
-    val WEATHER_LOCATION_ADDRESS = StringItem("weather_location_address", "")
 }

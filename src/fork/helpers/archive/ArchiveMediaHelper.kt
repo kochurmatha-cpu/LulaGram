@@ -16,23 +16,37 @@ import org.telegram.tgnet.TLRPC
 
 object ArchiveMediaHelper {
     private const val TAG = "ArchiveMediaHelper"
-    private const val FOLDER = "entinyGram/Saved Attachments"
+    private const val FOLDER = "Saved Attachments"
 
+    // lulagram: the archive lives in app-specific storage (Android/data/<package>/files/LulaGram), so it needs no storage
+    // permission and leaves nothing in the public Download folder. Download/ is only read to migrate older builds.
     private val downloads: File
         get() = android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS)
 
-    private fun privateRoot() = File(ApplicationLoader.applicationContext.filesDir, "entinyGram/media")
+    private val context get() = ApplicationLoader.applicationContext
 
-    internal fun archiveRoots(): List<File> = listOf(File(downloads, FOLDER), privateRoot())
+    private fun appRoot() = File(context.getExternalFilesDir(null) ?: context.filesDir, "LulaGram/$FOLDER")
+
+    // fallback when the app-specific external folder is not writable
+    private fun privateRoot() = File(context.filesDir, "LulaGram/media")
+
+    private fun legacyPrivateRoot() = File(context.filesDir, "entinyGram/media")
+
+    private fun legacyNames() = setOf("entinyGram", "LulaGram", InuConfig.DOWNLOAD_DIRECTORY.value)
+
+    private fun legacyPublicRoots() = legacyNames().map { File(downloads, "$it/$FOLDER") }
+
+    internal fun archiveRoots(): List<File> =
+        listOf(appRoot(), privateRoot(), legacyPrivateRoot()) + legacyPublicRoots()
 
     private val savedDirs = HashMap<Long, File>()
 
-    // entiny: one hidden folder in Download; the app-private one is only the fallback when shared storage is not writable
+    // lulagram: one hidden folder in app-specific storage; the internal one is only the fallback
     fun getSavedMediaDir(account: Int): File {
         val userId = UserConfig.getInstance(account).clientUserId
         synchronized(savedDirs) {
             savedDirs[userId]?.let { return it }
-            val dir = File(downloads, "$FOLDER/account_$userId").takeIf(::prepare) ?: File(privateRoot(), "account_$userId").also(::prepare)
+            val dir = File(appRoot(), "account_$userId").takeIf(::prepare) ?: File(privateRoot(), "account_$userId").also(::prepare)
             savedDirs[userId] = dir
             return dir
         }
@@ -94,9 +108,25 @@ object ArchiveMediaHelper {
         index.delete()
     }
 
+    // lulagram: drop the emptied folders older builds left in Download (delete() never removes a non-empty directory)
+    private fun pruneLegacyFolders() {
+        for (root in legacyPublicRoots()) {
+            try {
+                root.listFiles()?.forEach { if (it.isDirectory) it.delete() }
+                if (root.listFiles()?.all { it.name == ".nomedia" } == true) {
+                    File(root, ".nomedia").delete()
+                    root.delete()
+                    root.parentFile?.delete()
+                }
+            } catch (e: Throwable) {
+                android.util.Log.d(TAG, "legacy archive folder cleanup failed", e)
+            }
+        }
+    }
+
     private fun migrateSavedMedia(account: Int, targetRoot: File, paths: List<String>) {
         val storage = MessagesStorage.getInstance(account)
-        val legacy = (listOf(privateRoot()) + setOf("entinyGram", InuConfig.DOWNLOAD_DIRECTORY.value).map { File(downloads, "$it/media") })
+        val legacy = (listOf(legacyPrivateRoot()) + legacyPublicRoots() + legacyNames().map { File(downloads, "$it/media") })
             .mapNotNull { runCatching { it.canonicalFile.path + File.separator }.getOrNull() }
         var moved = 0
         for (path in paths) {
@@ -120,6 +150,7 @@ object ArchiveMediaHelper {
                 android.util.Log.d(TAG, "archive media migration failed", e)
             }
         }
+        pruneLegacyFolders()
         if (moved > 0) storage.storageQueue.postRunnable {
             AndroidUtilities.runOnUIThread {
                 ArchiveCache.invalidateMediaCache(account)

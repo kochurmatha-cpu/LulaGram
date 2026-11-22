@@ -26,7 +26,6 @@ import desu.inugram.ui.settings.ParanoiaActivity
 import desu.inugram.ui.settings.RegexFilterSettingsActivity
 import desu.inugram.ui.settings.SettingsPageActivity
 import desu.inugram.ui.settings.TranslatorSettingsActivity
-import desu.inugram.ui.settings.WeatherLocationActivity
 import desu.inugram.ui.settings.fonts.FontStackActivity
 import desu.inugram.ui.settings.fonts.FontsSettingsActivity
 import org.telegram.messenger.LocaleController
@@ -71,7 +70,6 @@ object SearchRegistry {
             Schemas.PRIVACY.page,
             Schemas.RESTRICTED.page,
             Schemas.NETWORK.page,
-            Schemas.PROXY.page,
             Schemas.PROFILE.page,
             Schemas.HOME.page,
             Schemas.SYSTEM.page,
@@ -83,7 +81,6 @@ object SearchRegistry {
             Schemas.ANNOYANCES.page,
             GhostModeSettingsActivity.PAGE,
             PillStackSettingsActivity.PAGE,
-            WeatherLocationActivity.PAGE,
             AntiDeletionSettingsActivity.PAGE,
             RegexFilterSettingsActivity.PAGE,
             TranslatorSettingsActivity.PAGE,

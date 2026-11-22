@@ -95,19 +95,17 @@ index 0000000..0000000 100644
  
      implementation "io.noties.markwon:core:4.6.2"
      implementation "io.noties.markwon:ext-strikethrough:4.6.2"
-@@ -107,9 +118,8 @@ dependencies {
+@@ -107,9 +118,6 @@ dependencies {
      api project(':jlatexmath')
  
      // inu
 -    if (!project.hasProperty("NOMAPS")) {
 -        implementation 'org.maplibre.gl:android-sdk:13.1.0'
 -    }
-+    // pure-java osm renderer, no native libs (replaces maplibre, which cost ~12MB of .so per ABI)
-+    implementation 'org.osmdroid:osmdroid-android:6.1.20'
      implementation 'com.caverock:androidsvg-aar:1.4'
      implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:6.1'
      androidTestImplementation 'androidx.test:runner:1.6.2'
-@@ -183,7 +193,7 @@ def preprocessInuSources = tasks.register('preprocessInuSources') {
+@@ -183,7 +191,7 @@ def preprocessInuSources = tasks.register('preprocessInuSources') {
  }
  
  android {
@@ -116,18 +114,17 @@ index 0000000..0000000 100644
      buildToolsVersion '36.0.0'
      ndkVersion "27.2.12479018"
  
-@@ -198,9 +208,7 @@ android {
+@@ -198,9 +206,6 @@ android {
      }
  
      // inu
 -    if (!project.hasProperty("NOMAPS")) {
 -        sourceSets.main.java.srcDirs += 'src/main/kotlin-maps'
 -    }
-+    sourceSets.main.java.srcDirs += 'src/main/kotlin-osmdroid'
      // end inu
  
      externalNativeBuild {
-@@ -215,6 +223,10 @@ android {
+@@ -215,6 +220,10 @@ android {
          aidl true
      }
  
@@ -138,7 +135,7 @@ index 0000000..0000000 100644
      lintOptions {
          disable 'MissingTranslation'
          disable 'ExtraTranslation'
-@@ -226,9 +238,6 @@ android {
+@@ -226,9 +235,6 @@ android {
          targetCompatibility JavaVersion.VERSION_1_8
      }
  
@@ -148,7 +145,7 @@ index 0000000..0000000 100644
  
      defaultConfig {
          buildConfigField "boolean", "INU_PLUGINLESS", rootProject.ext.inuPluginless.toString()
-@@ -238,7 +247,12 @@ android {
+@@ -238,7 +244,12 @@ android {
          targetSdkVersion 36
  
          ndk {
@@ -162,7 +159,7 @@ index 0000000..0000000 100644
          }
  
          externalNativeBuild {
-@@ -246,6 +260,9 @@ android {
+@@ -246,6 +257,9 @@ android {
                  version '3.22.1'
                  arguments '-DANDROID_STL=c++_static', '-DANDROID_PLATFORM=android-26' //, '-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON'
                  targets 'tmessages.49', 'twidget'
@@ -172,7 +169,7 @@ index 0000000..0000000 100644
                  if (rootProject.ext.ccachePath) {
                      arguments += ["-DCMAKE_C_COMPILER_LAUNCHER=${rootProject.ext.ccachePath}", "-DCMAKE_CXX_COMPILER_LAUNCHER=${rootProject.ext.ccachePath}"]
                  }
-@@ -258,6 +275,7 @@ android {
+@@ -258,6 +272,7 @@ android {
              jniDebuggable true
              shrinkResources false
              multiDexEnabled true
@@ -180,7 +177,7 @@ index 0000000..0000000 100644
              ndk.debugSymbolLevel = 'FULL'
              buildConfigField "String", "BUILD_VERSION_STRING", "\"" + rootProject.ext.verName + "\""
              buildConfigField "String", "BUILD_DATE", "\"" + rootProject.ext.buildDate + "\""
-@@ -270,9 +288,15 @@ android {
+@@ -270,9 +285,15 @@ android {
  
          release {
              jniDebuggable false
@@ -197,7 +194,7 @@ index 0000000..0000000 100644
              buildConfigField "String", "BUILD_VERSION_STRING", "\"" + rootProject.ext.verName + "\""
              buildConfigField "String", "BUILD_DATE", "\"" + rootProject.ext.buildDate + "\""
              buildConfigField "String", "INU_BUILD_TYPE", "\"" + (System.getenv('INU_BUILD_TYPE') ?: 'debug') + "\""
-@@ -283,6 +307,10 @@ android {
+@@ -283,6 +304,10 @@ android {
          }
      }
  

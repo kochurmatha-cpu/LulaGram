@@ -9,10 +9,8 @@ import desu.inugram.helpers.pillstack.pills.DcPingPill
 import desu.inugram.helpers.pillstack.pills.GhostPill
 import desu.inugram.helpers.pillstack.pills.LastSeenPill
 import desu.inugram.helpers.pillstack.pills.NetSpeedPill
-import desu.inugram.helpers.pillstack.pills.ProxyPill
 import desu.inugram.helpers.pillstack.pills.RamPill
 import desu.inugram.helpers.pillstack.pills.StoragePill
-import desu.inugram.helpers.pillstack.pills.WeatherPill
 import org.telegram.messenger.FileLog
 import org.telegram.ui.ActionBar.Theme
 
@@ -29,9 +27,7 @@ object PillRegistry {
 
     init {
         register(PillInfo(PillType.CLOCK.id, PillType.CLOCK.iconRes) { c, r -> ClockPill(c, r) })
-        register(PillInfo(PillType.WEATHER.id, PillType.WEATHER.iconRes) { c, r -> WeatherPill(c, r) })
         register(PillInfo(PillType.CACHE.id, PillType.CACHE.iconRes) { c, r -> CachePill(c, r) })
-        register(PillInfo(PillType.PROXY.id, PillType.PROXY.iconRes) { c, r -> ProxyPill(c, r) })
         register(PillInfo(PillType.GHOST.id, PillType.GHOST.iconRes) { c, r -> GhostPill(c, r) })
         register(PillInfo(PillType.RAM.id, PillType.RAM.iconRes) { c, r -> RamPill(c, r) })
         register(PillInfo(PillType.NET_SPEED.id, PillType.NET_SPEED.iconRes) { c, r -> NetSpeedPill(c, r) })

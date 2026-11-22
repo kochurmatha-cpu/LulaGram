@@ -50,8 +50,8 @@ for (const e of await fs.readdir(resDir, { withFileTypes: true })) {
   } catch {}
 }
 if (!locales.size) {
-  console.error('check-translations: no locales found')
-  process.exit(1)
+  console.log('check-translations: english only, nothing to check')
+  process.exit(0)
 }
 
 const isoList = [...locales.keys()].sort()

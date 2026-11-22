@@ -80,9 +80,10 @@ function res(source: string, dir: string, extra: Partial<ForkSyncFile> = {}): Fo
   return { source: `src/res/${source}`, target: `${resTarget}/${dir}`, ...extra }
 }
 
-// a new locale needs a values-<iso>/strings_inu.xml, an entry here, and a localeFilters entry in
-// TMessagesProj_App/build.gradle (entiny__build-configuration)
-const locales = ['ru', 'uk', 'ja', 'zh-rCN', 'tr', 'ar', 'fa', 'es', 'it']
+// english only. the app's localeFilters are built from the values-<iso> folders that carry a strings_inu.xml
+// (entiny__build-configuration), so an empty list here leaves only the default english resources in the apk.
+// a new locale needs a values-<iso>/strings_inu.xml and an entry in this list
+const locales: string[] = []
 const splashColorDirs = ['values', 'values-night-v31', 'values-v34']
 
 export const forkSyncFiles: ForkSyncFile[] = [
@@ -99,7 +100,6 @@ export const forkSyncFiles: ForkSyncFile[] = [
   // src/test/kotlin is synced into a kotlin source root, so what the suite needs as a *file* is
   // kept beside it rather than in it
   { source: 'src/test/assets/*.{dex,gif,json}', target: 'TMessagesProj/src/androidTest/assets/inu', pluginsOnly: true },
-  { source: 'src/kotlin-osmdroid', target: 'TMessagesProj/src/main/kotlin-osmdroid/desu/inugram/helpers/maps/osm', directory: true },
   { source: 'src/core', target: 'InuCore', directory: true },
   // native: rust plugin engine (rquickjs/quickjs-ng + jni bridge), built into libinu_native.so
   // by a cargo-ndk Exec task wired in TMessagesProj_App/build.gradle

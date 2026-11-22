@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/banner.svg" width="100%" alt="entinyGram" />
+  <img src="assets/banner.svg" width="100%" alt="LulaGram" />
 </p>
 
-# entinyGram
+# LulaGram
 
 an independent StGit patchset on top of official Telegram and Inugram.
 
@@ -16,7 +16,7 @@ everything entinygram adds lives in **settings → entinygram**, grouped into pa
 - [translation & ai](FEATURES.md#translation--ai): translate chats, transcribe voice, use your own ai providers.
 - [forward pro](FEATURES.md#messages--sending): forwards with grouped albums, comments and a live preview.
 - [custom interface](FEATURES.md#appearance--customization): themes, tabs, chat layout and message menus.
-- [plugin system](FEATURES.md#proxy-plugins--performance): plugins from the catalog or your own with the sdk.
+- [plugin system](FEATURES.md#plugins--performance): plugins from the catalog or your own with the sdk.
 
 ## docs
 
@@ -34,7 +34,7 @@ signed apks are on the [releases](https://github.com/entaytion/entinyGram/releas
 
 ```sh
 git clone https://github.com/entaytion/entinyGram.git
-cd entinyGram
+cd LulaGram
 bun install
 bun run setup
 ```

@@ -10,14 +10,11 @@ import org.telegram.messenger.ApplicationLoaderImpl as BaseApplicationLoaderImpl
 import org.telegram.messenger.BetaUpdate
 import org.telegram.messenger.FileLoader
 import org.telegram.messenger.FileLog
-import org.telegram.messenger.GoogleMapsProvider
-import org.telegram.messenger.IMapsProvider
 import org.telegram.messenger.SharedConfig
 import org.telegram.messenger.UserConfig
 import org.telegram.tgnet.TLRPC
 import org.telegram.ui.Components.AlertsCreator
 import org.telegram.ui.IUpdateLayout
-import desu.inugram.helpers.maps.MapsHelper
 
 class ApplicationLoaderImpl : BaseApplicationLoaderImpl() {
     override fun isStandalone(): Boolean = true
@@ -65,12 +62,5 @@ class ApplicationLoaderImpl : BaseApplicationLoaderImpl() {
 
     override fun takeUpdateLayout(activity: Activity, sideMenuContainer: ViewGroup): IUpdateLayout {
         return UpdateLayout(activity, sideMenuContainer)
-    }
-
-    override fun onCreateMapsProvider(): IMapsProvider? {
-        if (InuConfig.MAP_PROVIDER.value == InuConfig.MapProviderItem.OSM_LITE && MapsHelper.hasOsmdroid) {
-            return MapsHelper.newOsmdroidProvider()
-        }
-        return GoogleMapsProvider()
     }
 }

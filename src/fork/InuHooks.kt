@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Build
 import desu.inugram.helpers.CrashReporter
 import desu.inugram.helpers.LoginHelper
-import desu.inugram.helpers.ProxyVpnHelper
 import desu.inugram.helpers.ShortcutHelper
 import desu.inugram.helpers.SplashScreenHelper
 import desu.inugram.helpers.TabletModeHelper
@@ -14,7 +13,6 @@ import desu.inugram.helpers.cloud.CloudSettingsHelper
 import desu.inugram.helpers.dialogs.DrawerHelper
 import desu.inugram.helpers.dialogs.LinkedChatsHelper
 import desu.inugram.helpers.font.FontHelper
-import desu.inugram.helpers.maps.MapsHelper
 // #if PLUGINS
 import desu.inugram.helpers.plugins.PluginManager
 import desu.inugram.helpers.plugins.platform.PluginNotifications
@@ -58,7 +56,6 @@ object InuHooks {
         TabletModeHelper.sync()
         AndroidUtilities.inu_resetTabletCache()
         CrashReporter.collectNativeExit(context)
-        desu.inugram.helpers.proxy.CensorshipHelper.init()
     }
 
     /**
@@ -86,7 +83,6 @@ object InuHooks {
         }
         Utilities.globalQueue.postRunnable {
             CloudSettingsHelper.attachAutoSyncListener()
-            ProxyVpnHelper.init(context)
             UrlCleanerHelper.preload()
         }
         if (BuildConfig.INU_BUILD_TYPE == "debug") SearchRegistry.verifySlugs()
@@ -137,7 +133,6 @@ object InuHooks {
 
     @JvmStatic
     fun onMessagesControllerCreated(messagesController: MessagesController, account: Int) {
-        MapsHelper.syncMapProvider(messagesController)
         desu.inugram.helpers.dialogs.PinHelper.load(account)
         desu.inugram.helpers.dialogs.HiddenDialogsHelper.load(account)
         desu.inugram.helpers.dialogs.FolderMembershipHelper.load(account)
@@ -256,7 +251,6 @@ object InuHooks {
         CrashReporter.maybeShowReportSheet(launchActivity)
         desu.inugram.helpers.accounts.BotAccountHelper.ensurePolling()
         desu.inugram.helpers.LogsHelper.trimIfNeeded()
-        ProxyVpnHelper.reconcile()
         DrawerHelper.refreshUpdateState()
         desu.inugram.helpers.security.GhostHelper.syncPresence(org.telegram.messenger.UserConfig.selectedAccount)
         // #if PLUGINS

@@ -12,7 +12,6 @@ object PillStackLayout {
 
     private val DEFAULT_ACTIVE = listOf(
         PillType.CACHE.id,
-        PillType.PROXY.id,
         PillType.CLOCK.id,
         RateInstances.FIRST_ID,
     )

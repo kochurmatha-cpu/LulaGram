@@ -87,7 +87,7 @@ the one question behind every conflict: does the fork's delta still apply to the
 | 6 | structural: upstream changed nesting | take `current`'s structure, insert the fork line, trace braces, check variable scope | rare |
 | 7 | architectural: two incompatible approaches | ask the user. if told to drop, log it. often "follow upstream" | rare |
 
-worked example: the maps patch wraps `getString(R.string.Hybrid)` in `if (MapsHelper.isHybridAvailable())`. upstream changed `LocaleController.getString` to `getString`. keep `current`'s call and wrap only that line in the guard.
+worked example: a patch wraps `getString(R.string.X)` in a toggle guard and upstream changed `LocaleController.getString` to `getString`. keep `current`'s call and wrap only that line in the guard.
 
 do not over-verify: `src/fork` is untouched by the rebase, so its helpers and `InuConfig` items still resolve. verify only what your own edit caused: dangling refs, scope, brace balance, unused imports.
 

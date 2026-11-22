@@ -151,7 +151,7 @@
     <string name="InuAppIconDescBlush">Soft pink fading to yellow</string>
     <string name="InuAppIconDescConstellation">Stars linked by signal</string>
     <string name="InuAppIconDescCrimson">A blood moon over a sakura dusk</string>
-    <string name="InuAppIconDescDefault">The classic entinyGram dish</string>
+    <string name="InuAppIconDescDefault">The classic LulaGram dish</string>
     <string name="InuAppIconDescDish">Just the dish, nothing else</string>
     <string name="InuAppIconDescGold">Solid gold plating</string>
     <string name="InuAppIconDescGoogle26">Glossy blue on soft white</string>
@@ -182,7 +182,7 @@
     <string name="InuAppIconMono">Mono</string>
     <string name="InuAppIconNothing">Nothing</string>
     <string name="InuAppIconNoxSky">Nox Sky</string>
-    <string name="InuAppIconOldEntinygram">Old entinyGram</string>
+    <string name="InuAppIconOldEntinygram">Old LulaGram</string>
     <string name="InuAppIconOrbit">Orbit</string>
     <string name="InuAppIconOsu">osu!</string>
     <string name="InuAppIconRadar">Radar</string>
@@ -235,7 +235,6 @@
     <string name="InuAttachCameraResolution">Video resolution</string>
     <string name="InuAttachCameraSquare">Square camera tile</string>
     <string name="InuAttachCameraSquareInfo">Camera in the gallery takes one cell instead of two</string>
-    <string name="InuAutoDisableProxyOnVpn">Disable proxy when VPN is active</string>
     <string name="InuAutoplayVideoMessages">Autoplay video messages</string>
     <string name="InuAutoSaveOneTime">Auto-save view-once media</string>
     <string name="InuAutoSaveStories">Auto-save viewed stories</string>
@@ -269,7 +268,7 @@
     <string name="InuBackupImportSheetTitle">Are you sure you want to apply these settings?</string>
     <string name="InuBackupImportSuccess">Imported %1$d settings</string>
     <string name="InuBackupReset">Reset settings</string>
-    <string name="InuBackupResetConfirm">All entinyGram settings will be reset to their default values. Your chats, accounts, and Telegram\'s own settings stay the same.\n\nThis cannot be undone.</string>
+    <string name="InuBackupResetConfirm">All LulaGram settings will be reset to their default values. Your chats, accounts, and Telegram\'s own settings stay the same.\n\nThis cannot be undone.</string>
     <string name="InuBackupResetNoChanges">Settings are already at their defaults</string>
     <string name="InuBackupResetSuccess">Reset %1$d settings</string>
     <string name="InuBackupSettings">Backup &amp; reset</string>
@@ -418,7 +417,7 @@
     <string name="InuChatInputMaxLines">Chat input max lines</string>
     <string name="InuChatInputTextSize">Chat input text size</string>
     <string name="InuChatList">Chat list</string>
-    <string name="InuChatMenuEntinyGram" translatable="false">entinyGram</string>
+    <string name="InuChatMenuEntinyGram" translatable="false">LulaGram</string>
     <string name="InuChatMenuItems">Items</string>
     <string name="InuChatMenuOrder">Chat menu</string>
     <string name="InuChatMenuOrderInfo">Reorder or hide chat three-dots menu items. Drag to move, toggle to hide.</string>
@@ -466,7 +465,7 @@
     <string name="InuCloudSync">Sync settings</string>
     <string name="InuCloudSyncAccountInactive">Account no longer signed in. Pick another to resume sync.</string>
     <string name="InuCloudSyncAuto">Auto-upload</string>
-    <string name="InuCloudSyncDesc">Backs up your entinyGram settings to Telegram cloud via [CloudStorage API](https://core.telegram.org/bots/webapps#cloudstorage) — your data never touches our servers.</string>
+    <string name="InuCloudSyncDesc">Backs up your LulaGram settings to Telegram cloud via [CloudStorage API](https://core.telegram.org/bots/webapps#cloudstorage) — your data never touches our servers.</string>
     <string name="InuCloudSyncedAt">last backup %1$s</string>
     <string name="InuCloudSyncFailed">Sync failed</string>
     <string name="InuCloudSyncing">Syncing…</string>
@@ -530,13 +529,13 @@
     <string name="InuCrashDescOom">Sorry about that. Crash logs aren\'t very useful for out-of-memory issues — a heap dump is what helps.</string>
     <string name="InuCrashDiscard">Discard</string>
     <string name="InuCrashNotifText">Tap to restart</string>
-    <string name="InuCrashNotifTitle">entinyGram crashed</string>
-    <string name="InuCrashOomEnableLogs">Enable debug mode in entinyGram Settings > About to create a heap dump on every future OOM.</string>
+    <string name="InuCrashNotifTitle">LulaGram crashed</string>
+    <string name="InuCrashOomEnableLogs">Enable debug mode in LulaGram Settings > About to create a heap dump on every future OOM.</string>
     <string name="InuCrashPluginHooks">Plugin hooks ran around the crash, one of these plugins may be the cause:</string>
     <string name="InuCrashShare">Share crash log</string>
     <string name="InuCrashShareHeapDump">Save heap dump</string>
-    <string name="InuCrashTitle">entinyGram crashed last time</string>
-    <string name="InuCrashTitleOom">entinyGram ran out of memory</string>
+    <string name="InuCrashTitle">LulaGram crashed last time</string>
+    <string name="InuCrashTitleOom">LulaGram ran out of memory</string>
     <string name="InuCreateAsSupergroup">Create as supergroup</string>
     <string name="InuCreatedDate">Created: %s</string>
     <string name="InuCustomizeMessages">Hide in messages</string>
@@ -697,7 +696,7 @@
     <string name="InuDonateSectionCrypto">Crypto</string>
     <string name="InuDonateSectionOther">Other</string>
     <string name="InuDonateSheetInfo">Tap to copy or open. Completely optional.</string>
-    <string name="InuDonateSheetTitle">Support entinyGram</string>
+    <string name="InuDonateSheetTitle">Support LulaGram</string>
     <string name="InuDonateThanks">Thank you for being here ❤️</string>
     <string name="InuDonateWebsite">All methods on the website</string>
     <string name="InuDontAutoplayWidgets">Don\'t autoplay widgets</string>
@@ -961,7 +960,7 @@
     <string name="InuHideCollectibleStatus">Collectible status</string>
     <string name="InuHideCustomTheme">Hide custom theme</string>
     <string name="InuHideCustomWallpaper">Hide custom wallpaper</string>
-    <string name="InuHideDevBadges">Disable entinyGram badges</string>
+    <string name="InuHideDevBadges">Disable LulaGram badges</string>
     <string name="InuHideDevBadgesInfo">They don\'t mean anything, don\'t give any advantage — just a thank-you from the developer</string>
     <string name="InuHideDialogPreview">Hide last message preview</string>
     <string name="InuHideDialogPreviewInfo">Show the last message in the chat list under a spoiler</string>
@@ -978,7 +977,7 @@
     <string name="InuHideGiveaways">Giveaways</string>
     <string name="InuHideGroupStickerPack">Group emoji pack hint</string>
     <string name="InuHideHashtagSuggestions">Hashtag suggestions</string>
-    <string name="InuHideInugramSettings">Hide entinyGram settings</string>
+    <string name="InuHideInugramSettings">Hide LulaGram settings</string>
     <string name="InuHideIvSummary">Instant View summary</string>
     <string name="InuHideJoinBar">Join bar in channels</string>
     <string name="InuHideJoinBarInfo">You can still join from the channel profile</string>
@@ -1184,13 +1183,6 @@
     <string name="InuManyAccountsContinue">Continue</string>
     <string name="InuManyAccountsMessage">More than 8 accounts can slow the app down and drain the battery. Add another one anyway?</string>
     <string name="InuManyAccountsTitle">Many accounts</string>
-    <string name="InuMapPreviewProvider">Map preview provider</string>
-    <string name="InuMapPreviewProviderGoogle">Google</string>
-    <string name="InuMapPreviewProviderTelegram">Telegram</string>
-    <string name="InuMapProvider">Map view provider</string>
-    <string name="InuMapProviderGoogle">Google Maps</string>
-    <string name="InuMapProviderOsmLite">OpenStreetMap (lite)</string>
-    <string name="InuMapsHeader">Maps</string>
     <string name="InuMarkChatAsRead">Mark as read</string>
     <string name="InuMarkChatAsReadDone">Chat marked as read</string>
     <string name="InuMarket">Market</string>
@@ -1247,7 +1239,7 @@
     <string name="InuMarketWhatsNew">What\'s new in v%1$s</string>
     <string name="InuMarketWhatsNewTitle">Release notes</string>
     <string name="InuMaskServerAppName">Mask app name on the server</string>
-    <string name="InuMaskServerAppNameInfo">Hide the entinyGram name in the sessions list and show the stock client name instead</string>
+    <string name="InuMaskServerAppNameInfo">Hide the LulaGram name in the sessions list and show the stock client name instead</string>
     <string name="InuMaterial3">Material Design 3</string>
     <string name="InuMaterial3Avatars">Avatars</string>
     <string name="InuMaterial3BottomTabs">Bottom tabs</string>
@@ -1337,7 +1329,7 @@
     <string name="InuMinimize">Minimize</string>
     <string name="InuMiscPreviewEditedMessage">both are the best, doggo base 🐶⚡</string>
     <string name="InuMiscPreviewForwardedFrom">inu</string>
-    <string name="InuMiscPreviewForwardedMessage">woof! entinyGram or inuGram? 🐶</string>
+    <string name="InuMiscPreviewForwardedMessage">woof! LulaGram or inuGram? 🐶</string>
     <string name="InuMonetStyle">Monet style</string>
     <string name="InuMonetStyleClassic">Classic</string>
     <string name="InuMonetStyleMaterial3">Material 3</string>
@@ -1442,8 +1434,8 @@
     <string name="InuNoProfilePhotos">No profile photos found</string>
     <string name="InuNothingToTranslate">No translatable messages selected.</string>
     <string name="InuNotificationIcon">Notification icon</string>
-    <string name="InuNotificationIconInugram">entinyGram</string>
-    <string name="InuNotificationIconOldEntinygram">Old entinyGram</string>
+    <string name="InuNotificationIconInugram">LulaGram</string>
+    <string name="InuNotificationIconOldEntinygram">Old LulaGram</string>
     <string name="InuNotificationIconTelegram">Telegram</string>
     <string name="InuNotifyBellInMenu">Move the bell to the chat menu</string>
     <string name="InuNotifyBellInMenuInfo">Removes the silent broadcast bell from the input field of channels you post in. Toggle it from the chat menu instead</string>
@@ -1465,7 +1457,7 @@
     <string name="InuParanoiaCount">%1$d chats</string>
     <string name="InuParanoiaDisableNotifications">Disable notifications</string>
     <string name="InuParanoiaDisguise">Disguise as Telegram</string>
-    <string name="InuParanoiaDisguiseInfo">Only the launcher icon and name change; notifications still say \"entinyGram\".</string>
+    <string name="InuParanoiaDisguiseInfo">Only the launcher icon and name change; notifications still say \"LulaGram\".</string>
     <string name="InuParanoiaEnable">Enter paranoia mode</string>
     <string name="InuParanoiaEnableConfirm">Enter paranoia mode and restart? This entry will disappear — the only way back is typing the exit code in chat search, or reinstalling the app!</string>
     <string name="InuParanoiaExit">Exit paranoia mode</string>
@@ -1508,7 +1500,7 @@
     <string name="InuPasscodeRemove">Remove passcode</string>
     <string name="InuPasscodeRemoveConfirm">Remove the passcode for this account?</string>
     <string name="InuPasscodeSet">Set passcode</string>
-    <string name="InuPasscodeShowInSettings">Show in entinyGram settings</string>
+    <string name="InuPasscodeShowInSettings">Show in LulaGram settings</string>
     <string name="InuPasscodeShowInSettingsInfo">When off, this page opens only via the link below — save it now.</string>
     <string name="InuPasscodeStateHidden">Hidden</string>
     <string name="InuPasscodeStateNone">Not configured</string>
@@ -1538,10 +1530,6 @@
     <string name="InuPillStackListEmpty">Empty</string>
     <string name="InuPillStackNetSpeed">Network speed</string>
     <string name="InuPillStackPillsSettingsInfo">Configure which pills will be visible. Tap to show or hide, hold and drag to change the display order.</string>
-    <string name="InuPillStackProxy">Proxy</string>
-    <string name="InuPillStackProxyCountry">Show proxy country</string>
-    <string name="InuPillStackProxyCountryInfo">Adds the proxy country flag to the ping pill while a proxy is on. The proxy address is looked up once through a free GeoIP service.</string>
-    <string name="InuPillStackProxyPing">%1$d ms</string>
     <string name="InuPillStackRam">RAM</string>
     <string name="InuPillStackRateBase">Base</string>
     <string name="InuPillStackRatePreview">1 %1$s ≈ %2$s</string>
@@ -1551,7 +1539,6 @@
     <string name="InuPillStackResetDone">Pill layout has been reset</string>
     <string name="InuPillStackStorage">Free storage</string>
     <string name="InuPillStackVisibleCount">Visible at once</string>
-    <string name="InuPillStackWeather">Weather</string>
     <string name="InuPinAction">Pin action</string>
     <string name="InuPinMessagesAlert">Pin %1$d messages?</string>
     <string name="InuPinnedJumpReturn">Return after jumping to pinned</string>
@@ -1710,7 +1697,7 @@
     <string name="InuPluginsEnableEngine">Enable plugins</string>
     <string name="InuPluginsEnableEngineInfo">Run installed plugins on startup</string>
     <string name="InuPluginsEngineDisabled">Plugins are currently disabled\n\nEnable them in settings to install this plugin</string>
-    <string name="InuPluginsErrorApiVersion">Needs a newer entinyGram (plugin API %1$d, this app has %2$d)</string>
+    <string name="InuPluginsErrorApiVersion">Needs a newer LulaGram (plugin API %1$d, this app has %2$d)</string>
     <string name="InuPluginsErrorBadAssets">Invalid bundled assets (%1$s)</string>
     <string name="InuPluginsErrorBadGrant">Invalid permissions requested (%1$s)</string>
     <string name="InuPluginsErrorNoManifest">Not a valid plugin (missing metadata header)</string>
@@ -1826,37 +1813,6 @@
     <string name="InuProfileSettingsRowsOrder">Settings screen order</string>
     <string name="InuProfileSettingsRowsOrderInfo">Reorder or hide rows on the Settings screen. Drag to move, toggle to hide.</string>
     <string name="InuProfileSettingsRowsReset">Reset to default</string>
-    <string name="InuProxyImported_one">%1$d proxy imported</string>
-    <string name="InuProxyImported_other">%1$d proxies imported</string>
-    <string name="InuProxyImportFromClipboard">Import from clipboard</string>
-    <string name="InuProxyImportNothing">No new proxy links found in clipboard</string>
-    <string name="InuProxyPage">Proxy</string>
-    <string name="InuProxyDisclaimer">Heads up: everything on this page is experimental. Honestly, it works in maybe half of the cases. If something does not work, loads slowly, or chats and media stop loading, just switch the feature off. I don\'t know whether it works on your network or not. These features were removed once after bug reports and are back now for testing, so please report any problems.</string>
-    <string name="InuProxyListHeader">Proxy list</string>
-    <string name="InuProxyListTools">Ping all and delete failed</string>
-    <string name="InuProxyListToolsInfo">Adds Ping all proxies and Delete failed proxies rows to the proxy list</string>
-    <string name="InuProxyListMenu">Proxy list menu</string>
-    <string name="InuProxyListMenuInfo">Adds a three-dot menu to the proxy list: import from clipboard, copy or share all links, ping all, delete failed or all proxies. Replaces the Ping all and Delete failed rows</string>
-    <string name="InuProxyConnectChoice">Connect or just save</string>
-    <string name="InuProxyConnectChoiceInfo">When you add a proxy by hand, a Connect immediately switch lets you save it without connecting</string>
-    <string name="InuProxyLinksHeader">Proxy links</string>
-    <string name="InuProxyLinkAlert">Custom proxy link sheet</string>
-    <string name="InuProxyLinkAlertInfo">Opening a proxy link shows copy, save and connect buttons and pings the proxy right away, without the stock warning</string>
-    <string name="InuProxyRotationHeader">Rotation</string>
-    <string name="InuProxyAggressiveRotation">Aggressive rotation</string>
-    <string name="InuProxyAggressiveRotationInfo">While connecting, switches to the next proxy on every rotation timeout, even before checks finish. Needs proxy rotation on in the proxy list</string>
-    <string name="InuProxyTunnelHeader">Tunnel</string>
-    <string name="InuWsTunnel">WebSocket tunnel</string>
-    <string name="InuWsTunnelInfo">Connects through Telegram Web endpoints, no third-party servers. Replaces your proxy while on</string>
-    <string name="InuLeakGuard">Block direct connections</string>
-    <string name="InuLeakGuardInfo">Extra requests go only through your SOCKS5 proxy. Can break loading of media, previews and updates, so turn it off if something does not load</string>
-    <string name="InuProxyRelatedHeader">Related settings</string>
-    <string name="InuPingAllProxies">Ping All Proxies</string>
-    <string name="InuDeleteFailedProxies">Delete Failed Proxies</string>
-    <string name="InuDeleteFailedProxiesConfirm">Are you sure you want to delete all unavailable proxies?</string>
-    <string name="InuConnectProxyImmediately">Connect immediately</string>
-    <string name="InuCopyAllProxies">Copy all</string>
-    <string name="InuShareAllProxies">Share all</string>
     <string name="InuPublicPhotoMark">public photo</string>
     <string name="InuPullDownAction">Pull-down action</string>
     <string name="InuPullDownActionDisabled">Disabled</string>
@@ -2076,8 +2032,8 @@
     <string name="InuSendWithoutViaConfirm">Send this result as a regular message (without \"via\")?</string>
     <string name="InuSendWithoutViaRestrictedConfirm">Inline bots are restricted in this chat. Send this result as a regular message instead?</string>
     <string name="InuSetReminder">Set reminder</string>
-    <string name="InuSettingNotFound">This setting is not available in this version of entinyGram</string>
-    <string name="InuSettings">entinyGram Settings</string>
+    <string name="InuSettingNotFound">This setting is not available in this version of LulaGram</string>
+    <string name="InuSettings">LulaGram Settings</string>
     <string name="InuSettingsInfo">through the land and wind I follow you</string>
     <string name="InuSettingsShowAccounts">Show accounts in settings</string>
     <string name="InuShorterSwipeGestures">Shorter swipe gestures</string>
@@ -2312,7 +2268,7 @@
     <string name="InuUserProfile">User profile</string>
     <string name="InuUseSystemEmoji">Use system emoji</string>
     <string name="InuUseSystemEmojiInfo">Draws emoji with the system font instead of the Telegram set. Restart the app to apply it everywhere.</string>
-    <string name="InuVersion">entinyGram %1$s (%2$s)</string>
+    <string name="InuVersion">LulaGram %1$s (%2$s)</string>
     <string name="InuVersionBetaSuffix">(Beta)</string>
     <string name="InuViewOnceShowNormal">Show as a regular photo</string>
     <string name="InuVoiceMessages">Voice messages</string>
@@ -2334,11 +2290,6 @@
     <string name="InuWalletReplaceKeyButton">Replace</string>
     <string name="InuWalletReplaceKeyInfo">Keys from generators may have been seen by others. After this, the private key stops working, and your address with 12 new words restores the wallet.</string>
     <string name="InuWalletReplaceKeyTitle">Replace the key with 12 words?</string>
-    <string name="InuWeatherLocation">Weather Location</string>
-    <string name="InuWeatherLocationInfo">Shows the weather at the selected point. Updated at most every 15 minutes.</string>
-    <string name="InuWeatherLocationNotSet">Not selected</string>
-    <string name="InuWeatherSelectOnMap">Select on Map</string>
-    <string name="InuWeatherUseCurrentLocation">Use Current Location</string>
     <string name="InuWebPreviewAdd">Add replacement</string>
     <string name="InuWebPreviewEdit">Edit replacement</string>
     <string name="InuWebPreviewEnabled">Enable replacements</string>

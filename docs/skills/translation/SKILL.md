@@ -7,6 +7,8 @@ description: Audit and update entinyGram locale files (strings_inu.xml) and add 
 
 guide for auditing and updating entinygram's `strings_inu.xml` locale files.
 
+this build ships english only: `src/res/values/strings_inu.xml` is the single base file and there are no `values-<iso>` folders. the audit below only applies once a locale is added back. chat translation is not affected, it is independent of the ui language.
+
 ## audit a locale
 
 ```sh

@@ -11,9 +11,7 @@ enum class PillType(
     override val iconRes: Int,
 ) : MenuOrderItem {
     CLOCK(1, "clock", R.string.InuPillStackClock, R.drawable.entiny_clock),
-    WEATHER(2, "weather", R.string.InuPillStackWeather, R.drawable.entiny_sun),
     CACHE(3, "cache", R.string.StorageUsage, R.drawable.msg_filled_storageusage),
-    PROXY(4, "proxy", R.string.InuPillStackProxy, R.drawable.proxy_on_solar),
     GHOST(5, "ghost", R.string.InuGhostMode, R.drawable.inu_ghost),
     RAM(6, "ram", R.string.InuPillStackRam, R.drawable.entiny_microchip),
     NET_SPEED(8, "net_speed", R.string.InuPillStackNetSpeed, R.drawable.entiny_activity),

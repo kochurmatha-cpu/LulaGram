@@ -108,7 +108,6 @@ hooks/loginactivity.patch
 feature/login-options.patch
 feature/open-archive-on-pull.patch
 hooks/messagescontroller.patch
-feature/maps.patch
 feature/global-from-user-search.patch
 feature/forwarded-time.patch
 debloat/profile-photo-blur.patch
@@ -359,7 +358,6 @@ feature/bot-description-media-viewer.patch
 bugfix/forward-sender-avatar.patch
 bugfix/search-highlight-block-offset.patch
 bugfix/video-no-thumb-placeholder.patch
-feature/proxy-batch-import.patch
 bugfix/channel-updates-queue-pts.patch
 feature/keep-chats-in-stack.patch
 feature/attachment-preview-resolution.patch
@@ -397,7 +395,6 @@ bugfix/launch-activity-leaks.patch
 entiny/build-configuration.patch
 entiny/android-auto-cleanup.patch
 entiny/sticker-maker-segmentation-crash.patch
-entiny/osmdroid-provider-wiring.patch
 entiny/concept-launcher-icons.patch
 entiny/save-self-destruct.patch
 entiny/round-recorder-60fps-and-exposure-lock.patch
@@ -686,9 +683,6 @@ entiny/ios-message-menu-glass.patch
 entiny/ios-glass-customization.patch
 entiny/ios-tabs-first-folder.patch
 entiny/ios-chat-header-blur.patch
-entiny/proxy-rotation-fix.patch
 entiny/bottom-tabs-v2.patch
-entiny/proxy-settings.patch
-entiny/anticensorship.patch
 entiny/pin-limit-hint.patch
 entiny/local-reactions.patch

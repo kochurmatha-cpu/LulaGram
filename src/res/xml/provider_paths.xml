@@ -4,5 +4,7 @@
     <files-path name="logs" path="/logs/"/>
     <files-path name="cache" path="/cache/"/>
     <files-path name="entiny_archive_media" path="entinyGram/media/"/>
+    <files-path name="lulagram_archive_media" path="LulaGram/media/"/>
+    <external-files-path name="lulagram_archive_saved" path="LulaGram/"/>
     <root-path name="external_files" path="/storage/" />
 </paths>

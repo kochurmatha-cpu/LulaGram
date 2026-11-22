@@ -14,7 +14,7 @@ entinygram is built on top of [inugram](https://github.com/teidesu/inugram). for
 | [media, camera & player](#media-camera--player) | downloads, hd photos, camera and player tweaks |
 | [chat list & folders](#chat-list--folders) | local folders, unread chats first |
 | [notifications & calls](#notifications--calls) | unifiedpush, background service, call fixes |
-| [proxy, plugins & performance](#proxy-plugins--performance) | plugin market, osmdroid map, smaller apk |
+| [plugins & performance](#plugins--performance) | plugin market, smaller apk |
 | [debloat & premium noise](#debloat--premium-noise) | hide gifts, premium badges, upsells and banners |
 
 ## entinygram additions
@@ -145,13 +145,9 @@ entinygram is built on top of [inugram](https://github.com/teidesu/inugram). for
 - **calls** — rotate the call screen, keep the screen on by ignoring the proximity sensor
 - **audio** — fix playback stuck on pause (miui and some dsps), no preloading or auto-play of the next track or voice message, remembered playback position for short videos and audio
 
-### proxy, plugins & performance
+### plugins & performance
 
-- **experimental proxy page** — ping all and delete failed proxies, proxy list menu with copy and share all links, save a proxy without connecting, custom proxy link sheet with status check, aggressive rotation, all off by default
-  - **websocket tunnel** — connect through Telegram Web endpoints, no third-party servers; excluded from settings backups - *inspired by [tg-ws-proxy](https://github.com/Flowseal/tg-ws-proxy) (@Flowseal) and [NimarkoGram](https://github.com/Ettacent/NimarkoGram)*
-  - **block direct connections** — extra requests go only through your SOCKS5 proxy
 - **plugin market** — themed catalog with filters, version badges, authors and tags, a dedicated page and automatic sdk installation
-- **osmdroid map view** — pure-java openstreetmap renderer replacing maplibre, about 12 MB less native code
 - **faster cold start**, locale caching and a smaller apk without android auto
 - **memory** — image caches freed shortly after minimize, closed chats and photo viewers no longer leak through the emoji panel
 - **highest refresh rate** — keep the screen at its highest refresh rate - *inspired by Graniton*

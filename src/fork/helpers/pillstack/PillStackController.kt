@@ -234,8 +234,6 @@ class PillStackController(
             InuConfig.PILL_STACK_HIDDEN_PILLS.key,
             InuConfig.PILL_STACK_RATE_INSTANCES.key,
             InuConfig.PILL_STACK_IN_HEADER.key,
-            InuConfig.WEATHER_USE_CURRENT_LOCATION.key,
-            InuConfig.WEATHER_LOCATION.key,
             InuConfig.NON_ISLAND_GLOBAL_SEARCH.key,
         )
     }

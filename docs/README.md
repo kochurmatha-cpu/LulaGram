@@ -14,13 +14,13 @@ everything entinygram adds lives in **settings → entinygram**, grouped into pa
 - [forward pro](../FEATURES.md#messages--sending): compose forwards with grouped albums, formatted comments, and a live bubble preview.
 - [custom interface](../FEATURES.md#appearance--customization): tune themes, tabs, chat layout, message menus, and other parts of the app.
 - [channel feed](../FEATURES.md#appearance--customization): read subscribed channels in one chat-style timeline.
-- [plugin system](../FEATURES.md#proxy-plugins--performance): extend the client with plugins from the catalog or build your own with the sdk.
+- [plugin system](../FEATURES.md#plugins--performance): extend the client with plugins from the catalog or build your own with the sdk.
 
 ## docs
 
 | guide | contents |
 | --- | --- |
-| [all features](../FEATURES.md) | every entinyGram feature |
+| [all features](../FEATURES.md) | every LulaGram feature |
 | [removed features](removed.md) | what was removed and why |
 | [build guide](https://entinygram.vercel.app/build) | prerequisites, setup, and signing |
 | [plugin sdk](../sdk/docs/README.md) | plugin api and authoring |
