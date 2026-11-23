@@ -946,6 +946,10 @@ object Schemas {
                 },
             )
             toggle(
+                InuConfig.DRAWER_SWIPE_OPEN, R.string.InuDrawerSwipeOpen, R.string.InuDrawerSwipeOpenInfo,
+                visible = { InuConfig.NAVIGATION_DRAWER.value },
+            )
+            toggle(
                 InuConfig.DRAWER_BACK_GESTURE, R.string.InuDrawerBackGesture, R.string.InuDrawerBackGestureInfo,
                 visible = { Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && InuConfig.NAVIGATION_DRAWER.value },
                 onChange = { page, _ -> page.showRestart() },

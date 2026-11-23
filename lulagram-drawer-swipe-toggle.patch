@@ -1,0 +1,57 @@
+diff --git a/src/fork/InuConfig.kt b/src/fork/InuConfig.kt
+index 96a72ffc..4bdee6a9 100644
+--- a/src/fork/InuConfig.kt
++++ b/src/fork/InuConfig.kt
+@@ -505,6 +505,9 @@ object InuConfig {
+     @JvmField
+     val DRAWER_BACK_GESTURE = BoolItem("drawer_back_gesture", false)
+ 
++    @JvmField
++    val DRAWER_SWIPE_OPEN = BoolItem("drawer_swipe_open", true)
++
+     @JvmField
+     val DRAWER_KEEP_OPTIONS_MENU = BoolItem("drawer_keep_options_menu", false)
+ 
+diff --git a/src/fork/ui/drawer/DrawerSwipeController.kt b/src/fork/ui/drawer/DrawerSwipeController.kt
+index 2d635164..a48b53b3 100644
+--- a/src/fork/ui/drawer/DrawerSwipeController.kt
++++ b/src/fork/ui/drawer/DrawerSwipeController.kt
+@@ -392,8 +392,10 @@ class DrawerSwipeController(private val host: DrawerLayoutContainer) {
+                 val dy = Math.abs(ev.y - startedTrackingY)
+                 val inEdgeZone = startedTrackingX <= AndroidUtilities.dp(EDGE_SAFE_ZONE_DP.toFloat())
+                 val openAngleOk = inEdgeZone || dx / 3f > dy
++                // lulagram: with the swipe turned off a closed drawer never starts tracking; a drawer that is already open or moving still follows the finger
+                 val openSwipe = dx > 0 && openAngleOk && Math.abs(dx) >= AndroidUtilities.getPixelsInCM(0.2f, true)
+                     && (!tabsOwnHorizontalSwipe() || inEdgeZone)
++                    && (InuConfig.DRAWER_SWIPE_OPEN.value || drawerOpened || drawerPosition > 0f)
+                 val closeSwipe = drawerOpened && dx < 0 && Math.abs(dx) >= dy && Math.abs(dx) >= AndroidUtilities.getPixelsInCM(0.4f, true)
+                 if (maybeStartTracking && !startedTracking && (openSwipe || closeSwipe)) {
+                     maybeStartTracking = false
+diff --git a/src/fork/ui/settings/Schemas.kt b/src/fork/ui/settings/Schemas.kt
+index 0f915140..60e4f537 100644
+--- a/src/fork/ui/settings/Schemas.kt
++++ b/src/fork/ui/settings/Schemas.kt
+@@ -945,6 +945,10 @@ object Schemas {
+                     page.showRestart()
+                 },
+             )
++            toggle(
++                InuConfig.DRAWER_SWIPE_OPEN, R.string.InuDrawerSwipeOpen, R.string.InuDrawerSwipeOpenInfo,
++                visible = { InuConfig.NAVIGATION_DRAWER.value },
++            )
+             toggle(
+                 InuConfig.DRAWER_BACK_GESTURE, R.string.InuDrawerBackGesture, R.string.InuDrawerBackGestureInfo,
+                 visible = { Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && InuConfig.NAVIGATION_DRAWER.value },
+diff --git a/src/res/values/strings_inu.xml b/src/res/values/strings_inu.xml
+index 9a69d96d..98f9167c 100644
+--- a/src/res/values/strings_inu.xml
++++ b/src/res/values/strings_inu.xml
+@@ -708,6 +708,8 @@
+     <string name="InuDownloadingStory">Downloading story…</string>
+     <string name="InuDownloadsAndNetwork">Downloads and network</string>
+     <string name="InuDownloadStickerPackZip">Download pack as ZIP</string>
++    <string name="InuDrawerSwipeOpen">Swipe right to open drawer</string>
++    <string name="InuDrawerSwipeOpenInfo">Turn off to stop a left-to-right swipe from opening the drawer. Open it with the menu button instead; swiping it closed still works.</string>
+     <string name="InuDrawerBackGesture">Open drawer with back gesture</string>
+     <string name="InuDrawerBackGestureInfo">Swiping back from the left edge of the chat list opens the drawer instead of leaving the app.</string>
+     <string name="InuDrawerBots">Mini apps</string>

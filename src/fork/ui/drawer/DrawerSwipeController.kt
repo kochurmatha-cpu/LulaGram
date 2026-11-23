@@ -392,8 +392,10 @@ class DrawerSwipeController(private val host: DrawerLayoutContainer) {
                 val dy = Math.abs(ev.y - startedTrackingY)
                 val inEdgeZone = startedTrackingX <= AndroidUtilities.dp(EDGE_SAFE_ZONE_DP.toFloat())
                 val openAngleOk = inEdgeZone || dx / 3f > dy
+                // lulagram: with the swipe turned off a closed drawer never starts tracking; a drawer that is already open or moving still follows the finger
                 val openSwipe = dx > 0 && openAngleOk && Math.abs(dx) >= AndroidUtilities.getPixelsInCM(0.2f, true)
                     && (!tabsOwnHorizontalSwipe() || inEdgeZone)
+                    && (InuConfig.DRAWER_SWIPE_OPEN.value || drawerOpened || drawerPosition > 0f)
                 val closeSwipe = drawerOpened && dx < 0 && Math.abs(dx) >= dy && Math.abs(dx) >= AndroidUtilities.getPixelsInCM(0.4f, true)
                 if (maybeStartTracking && !startedTracking && (openSwipe || closeSwipe)) {
                     maybeStartTracking = false

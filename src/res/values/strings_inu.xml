@@ -708,6 +708,8 @@
     <string name="InuDownloadingStory">Downloading story…</string>
     <string name="InuDownloadsAndNetwork">Downloads and network</string>
     <string name="InuDownloadStickerPackZip">Download pack as ZIP</string>
+    <string name="InuDrawerSwipeOpen">Swipe right to open drawer</string>
+    <string name="InuDrawerSwipeOpenInfo">Turn off to stop a left-to-right swipe from opening the drawer. Open it with the menu button instead; swiping it closed still works.</string>
     <string name="InuDrawerBackGesture">Open drawer with back gesture</string>
     <string name="InuDrawerBackGestureInfo">Swiping back from the left edge of the chat list opens the drawer instead of leaving the app.</string>
     <string name="InuDrawerBots">Mini apps</string>

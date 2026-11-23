@@ -506,6 +506,9 @@ object InuConfig {
     val DRAWER_BACK_GESTURE = BoolItem("drawer_back_gesture", false)
 
     @JvmField
+    val DRAWER_SWIPE_OPEN = BoolItem("drawer_swipe_open", true)
+
+    @JvmField
     val DRAWER_KEEP_OPTIONS_MENU = BoolItem("drawer_keep_options_menu", false)
 
     @JvmField
